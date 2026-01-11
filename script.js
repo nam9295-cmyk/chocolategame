@@ -2,6 +2,7 @@ const gameContainer = document.getElementById('game-container');
 const rabbit = document.getElementById('rabbit');
 const scoreElement = document.getElementById('score');
 const victoryMessage = document.getElementById('victory-message');
+const restartButton = document.getElementById('restart-button');
 
 let score = 0; // Total chocolates eaten
 let rabbitX = 0;
@@ -186,6 +187,25 @@ function triggerWin() {
     
     // Confetti or something? For now just big rabbit
 }
+
+function restartGame() {
+    score = 0;
+    scoreElement.innerText = score;
+    isPoopMode = false;
+    recoveryCount = 0;
+    isGameOver = false;
+    rabbitScale = 1;
+    rabbit.classList.remove('poop-mode');
+    victoryMessage.style.display = 'none';
+    rabbit.style.zIndex = 10;
+
+    document.querySelectorAll('.falling-item').forEach((item) => item.remove());
+
+    rabbitX = getViewport().width / 2;
+    updateRabbitPosition();
+}
+
+restartButton.addEventListener('click', restartGame);
 
 // Game Loop
 setInterval(spawnItem, 800); 
