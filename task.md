@@ -1,0 +1,23 @@
+# Tasks
+
+- [x] Create project structure (index.html, style.css, script.js) <!-- id: 0 -->
+- [x] Implement game loop and basic mechanics <!-- id: 1 -->
+    - [x] Bunny movement (mouse or keyboard) <!-- id: 2 -->
+    - [x] Spawning chocolates with parachutes <!-- id: 3 -->
+    - [x] Falling physics/animation <!-- id: 4 -->
+    - [x] Collision detection <!-- id: 5 -->
+    - [x] Growth mechanic <!-- id: 6 -->
+- [x] visuals and aesthetics <!-- id: 7 -->
+    - [x] Cute bunny design (SVG or CSS) <!-- id: 8 -->
+    - [x] Chocolate and parachute design <!-- id: 9 -->
+    - [x] Background and atmosphere <!-- id: 10 -->
+- [ ] Fix Rabbit Visibility (Ground obstruction) <!-- id: 19 -->
+    - [ ] Adjust Z-Index or DOM order <!-- id: 20 -->
+- [ ] Implement Poop Mechanic <!-- id: 12 -->
+    - [ ] Spawn poop items <!-- id: 13 -->
+    - [ ] Poop transformation (visual change) <!-- id: 14 -->
+    - [ ] Recovery mechanic (eat 3 chocolates to return to rabbit) <!-- id: 15 -->
+- [ ] Implement Win Condition <!-- id: 16 -->
+    - [ ] Track total chocolates eaten <!-- id: 17 -->
+    - [ ] Win at 30 chocolates (Max Growth + Game Over screen) <!-- id: 18 -->
+- [ ] Verify new mechanics <!-- id: 11 -->

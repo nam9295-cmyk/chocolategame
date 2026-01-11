@@ -1,0 +1,244 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #87CEEB; /* Sky blue */
+    font-family: 'Fredoka', sans-serif;
+}
+
+#game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+@media (orientation: portrait) {
+    #game-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100vh;
+        height: 100vw;
+        transform: translate(-50%, -50%) rotate(90deg);
+        transform-origin: center;
+    }
+}
+
+#ground {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background-color: #90EE90; /* Light green */
+    border-top: 5px solid #32CD32;
+    z-index: 0; /* Behind rabbit */
+}
+
+#score-board {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    z-index: 20;
+}
+
+#victory-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px 40px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 40px;
+    color: #FF69B4;
+    display: none; /* Hidden by default */
+    z-index: 100;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Rabbit Styling */
+#rabbit {
+    position: absolute;
+    bottom: 50px; /* Moved up slightly */
+    left: 50%;
+    transform: translateX(-50%) scale(1);
+    transform-origin: bottom center;
+    width: 60px;
+    height: 80px;
+    transition: width 0.2s, height 0.2s, transform 0.2s; /* Smooth growth */
+    pointer-events: none; /* Let mouse pass through */
+    z-index: 10; /* Above ground */
+}
+
+.ears {
+    position: absolute;
+    top: -20px;
+    width: 100%;
+    height: 30px;
+}
+
+.ear {
+    position: absolute;
+    width: 12px;
+    height: 35px;
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid #eee;
+}
+
+.ear.left { left: 10px; transform: rotate(-10deg); }
+.ear.right { right: 10px; transform: rotate(10deg); }
+
+.head {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    border-radius: 50% 50% 40% 40%;
+    z-index: 2;
+}
+
+.eye {
+    position: absolute;
+    top: 15px;
+    width: 8px;
+    height: 8px;
+    background-color: #333;
+    border-radius: 50%;
+}
+
+.eye.left { left: 15px; }
+.eye.right { right: 15px; }
+
+.nose {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 4px;
+    background-color: pink;
+    border-radius: 50%;
+}
+
+.mouth {
+    position: absolute;
+    top: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 5px;
+    border-bottom: 2px solid #333;
+    border-radius: 0 0 10px 10px;
+}
+
+.body {
+    position: absolute;
+    bottom: 0px;
+    width: 80%;
+    left: 10%;
+    height: 40px;
+    background-color: white;
+    border-radius: 40% 40% 50% 50%;
+    z-index: 1;
+}
+
+.tail {
+    position: absolute;
+    bottom: 5px;
+    right: -5px;
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+/* Poop Mode Styling */
+.poop-mode .ear, .poop-mode .tail {
+    display: none;
+}
+.poop-mode .head, .poop-mode .body {
+    background-color: #8B4513; /* Brown */
+    border-radius: 50% 50% 20% 20%;
+    width: 100%;
+    left: 0;
+}
+.poop-mode .head {
+    height: 40px;
+    top: 20px;
+    border-radius: 50% 50% 40% 40%;
+}
+.poop-mode .body {
+    height: 50px;
+    bottom: 0px;
+    border-radius: 40% 40% 30% 30%;
+    width: 120%;
+    left: -10%;
+}
+.poop-mode .nose { background-color: #5C3317; } /* Darker nose */
+
+
+/* Parachute & Chocolate */
+.falling-item {
+    position: absolute;
+    top: -100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 5;
+}
+
+.parachute {
+    width: 40px;
+    height: 25px;
+    background-color: #FF69B4; /* Hot pink default */
+    border-radius: 50% 50% 0 0;
+    position: relative;
+}
+
+.parachute::before, .parachute::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    width: 1px;
+    height: 10px;
+    background-color: #333;
+}
+.parachute::before { left: 5px; }
+.parachute::after { right: 5px; }
+
+.chocolate {
+    width: 20px;
+    height: 25px;
+    background-color: #8B4513; /* SaddleBrown */
+    border: 1px solid #5C3317;
+    margin-top: 10px;
+    border-radius: 2px;
+}
+
+.poop-item {
+    width: 25px;
+    height: 25px;
+    background-color: #8B4513;
+    border-radius: 50% 50% 10% 10%;
+    margin-top: 10px;
+    position: relative;
+    border: 1px solid #4e2709;
+}
+/* Coiled shape effect */
+.poop-item::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 15%;
+    width: 70%;
+    height: 10px;
+    background-color: #8B4513;
+    border-radius: 50%;
+    border: 1px solid #4e2709;
+}
