@@ -164,8 +164,8 @@ function eatChocolate() {
         scoreElement.innerText = score;
         
         // Growth logic
-        if (rabbitScale < 4) { // Allow bigger growth
-            rabbitScale += 0.1;
+        if (rabbitScale < 3) { // Slow growth to keep playability on mobile
+            rabbitScale += 0.05;
             updateRabbitPosition();
         }
 
