@@ -39,7 +39,7 @@ function getPointerX(clientX, clientY) {
     const viewport = getViewport();
     const isPortrait = window.matchMedia('(orientation: portrait)').matches;
     if (isPortrait) {
-        return viewport.width - clientY;
+        return clientY;
     }
     return clientX;
 }
